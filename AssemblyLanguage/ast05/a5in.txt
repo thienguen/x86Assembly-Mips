@@ -1,0 +1,43 @@
+#------------------------------------
+# CS 218 - Assignment #5
+#  Debugger Input Script
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a5out.txt
+set logging overwrite
+set logging on
+set prompt
+echo ------------------------------------ \n
+echo display provided data \n
+echo \n
+x/49uh &sides
+echo \n
+x/dw &length
+echo \n
+echo ------------------------------------ \n
+echo display variables for cube areas \n
+echo \n
+x/49uh &cubeAreas
+echo \n
+x/uh &caMin
+x/uh &caMax
+x/uh &caMid
+x/uw &caSum
+x/uh &caAve
+echo \n
+echo ------------------------------------ \n
+echo display variables for cube volumes \n
+echo \n
+x/49uw &cubeVolumes
+echo \n
+x/uw &cvMin
+x/uw &cvMax
+x/uw &cvMid
+x/uw &cvSum
+x/uw &cvAve
+echo \n \n
+set logging off
+

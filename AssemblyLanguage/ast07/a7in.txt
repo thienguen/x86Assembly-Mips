@@ -1,0 +1,29 @@
+#------------------------------------
+# CS 218 - Assignment #7
+#  Debugger Input Script
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a7out.txt
+set logging overwrite
+set logging on
+set prompt
+echo ------------------------------------ \n
+echo display variables \n
+echo \n
+print/d (int [200])lst
+echo \n
+printf "len: %i\n", (int)len
+echo \n
+printf "min: %i\n", (int)min
+printf "max: %i\n", (int)max
+printf "med: %i\n", (int)med
+printf "sum: %i\n", (int)sum
+printf "avg: %i\n", (int)avg
+echo \n
+set logging off
+set confirm off
+quit
+

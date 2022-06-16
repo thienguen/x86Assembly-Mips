@@ -1,0 +1,36 @@
+; -----
+;  Define standard constants.
+
+NULL		equ	0			; end of string
+
+TRUE		equ	1
+FALSE		equ	0
+
+EXIT_SUCCESS	equ	0			; Successful operation
+
+SYS_exit	equ	60			; call code for terminate
+
+; -----
+;  Assignment specific variables.
+
+bVar1		db	38
+bVar2		db	16
+bAns1		db	0
+bAns2		db	0
+wVar1		dw	3716
+wVar2		dw	1867
+wAns1		dw	0
+wAns2		dw	0
+dVar1		dd	168318283
+dVar2		dd	135678291
+dVar3		dd	-47156
+dAns1		dd	0
+dAns2		dd	0
+flt1		dd	-13.25
+flt2		dd	-14.125
+fourPi		dd	12.56636
+qVar1		dq	134278427262
+myClass		db	"CS-218", NULL
+edName		db	"Ed Jorgensen", NULL
+myName		db	"Thien Nguyen", NULL
+

@@ -1,0 +1,37 @@
+#------------------------------------
+#  CS 218 - Assignment #4
+#  Debugger Input Script
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a4out.txt
+set logging overwrite
+set logging on
+set prompt
+echo ------------------------------------ \n
+echo display variables \n
+echo \n
+echo lst: \n
+print/d (int [100])lst
+echo \n
+printf "length: %d\n\n", (int)len
+printf "lstMin: %d\n", (int)lstMin
+printf "lstMax: %d\n", (int)lstMax
+printf "lstMid: %d\n", (int)lstMid
+printf "lstSum: %d\n", (int)lstSum
+printf "lstAve: %d\n", (int)lstAve
+echo \n
+printf "evenCnt: %d\n", (int)evenCnt
+printf "evenSum: %d\n", (int)evenSum
+printf "evenAve: %d\n", (int)evenAve
+echo \n
+printf "fiveCnt: %d\n", (int)fiveCnt
+printf "fiveSum: %d\n", (int)fiveSum
+printf "fiveAve: %d\n", (int)fiveAve
+echo \n
+set logging off
+set confirm off
+quit
+

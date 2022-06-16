@@ -1,0 +1,39 @@
+#------------------------------------
+# CS 218 - Assignment #6
+#  Debugger Input Script
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a6out.txt
+set logging overwrite
+set logging on
+set prompt
+echo ------------------------------------ \n
+echo display variables \n
+echo \n
+echo Non-macro results:\n
+printf "aLength: %s\n", (char *)&aLength
+printf "length: %i\n", (int)length
+echo \n
+printf "cubeAreasSum: %i\n", (int)cubeAreasSum
+printf "areasSumString: %s\n", (char *)&areasSumString
+echo \n
+echo Display Cube Areas \n
+print/d (int[21])cubeAreas
+echo \n
+echo Display Cube Statistics \n
+printf "cubeAreasAve: %i\n", (int)cubeAreasAve
+printf "cubeAreasMin: %i\n", (int)cubeAreasMin
+printf "cubeAreasMax: %i\n", (int)cubeAreasMax
+echo \n
+echo Display Cube Statistics String \n
+printf "areasSumString: %s\n", (char *)&areasSumString
+printf "areasAveString: %s\n", (char *)&areasAveString
+printf "areasMinString: %s\n", (char *)&areasMinString
+printf "areasMaxString: %s\n", (char *)&areasMaxString
+echo \n
+set loggin off
+set confirm off
+quit

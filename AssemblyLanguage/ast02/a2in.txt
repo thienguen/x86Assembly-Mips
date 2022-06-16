@@ -1,0 +1,92 @@
+#------------------------------------
+# CS 218
+#   Assignment #2
+#   Debugger Script File
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a2out.txt
+set logging overwrite
+set logging on
+set prompt
+echo \n
+echo ------------------------------------ \n
+echo display byte variables \n
+printf "bVar1: %i\n", (unsigned char)bVar1
+printf "bVar2: %i\n", (unsigned char)bVar2
+printf "bAns1: %i\n", (unsigned char)bAns1
+printf "bAns2: %i\n", (unsigned char)bAns2
+echo \n
+echo display byte variables in hex \n
+printf "bVar1: 0x%02x\n", (unsigned char)bVar1
+printf "bVar2: 0x%02x\n", (unsigned char)bVar2
+printf "bAns1: 0x%02x\n", (unsigned char)bAns1
+printf "bAns2: 0x%02x\n", (unsigned char)bAns2
+echo \n
+echo ------------------------------------ \n
+echo display word variables \n
+printf "wVar1: %i\n", (signed short)wVar1
+printf "wVar2: %i\n", (signed short)wVar2
+printf "wAns1: %i\n", (signed short)wAns1
+printf "wAns2: %i\n", (signed short)wAns2
+echo \n
+echo display word variables in hex \n
+printf "wVar1: 0x%04x\n", (signed short)wVar1
+printf "wVar2: 0x%04x\n", (signed short)wVar2
+printf "wAns1: 0x%04x\n", (signed short)wAns1
+printf "wAns2: 0x%04x\n", (signed short)wAns2
+echo \n
+echo ------------------------------------ \n
+echo display double word variables \n
+printf "dVar1: %i\n", (int)dVar1
+printf "dVar2: %i\n", (int)dVar2
+printf "dVar3: %i\n", (int)dVar3
+printf "dAns1: %i\n", (int)dAns1
+printf "dAns2: %i\n", (int)dAns2
+echo \n
+echo display double word variables in hex \n
+printf "dVar1: 0x%08x\n", (int)dVar1
+printf "dVar2: 0x%08x\n", (int)dVar2
+printf "dVar3: 0x%08x\n", (int)dVar3
+printf "dAns1: 0x%08x\n", (int)dAns1
+printf "dAns2: 0x%08x\n", (int)dAns2
+echo \n
+echo ------------------------------------ \n
+echo display quad word variable \n
+printf "qVar1: %li\n", (signed long long)qVar1
+echo \n
+echo display quad word variable in hex\n
+printf "qVar1: 0x%016x\n", (signed long long)qVar1
+echo \n
+echo ------------------------------------ \n
+echo display real values in decimal \n
+printf "flt1: %f\n", (float)flt1
+printf "flt2: %f\n", (float)flt2
+printf "fourPi: %f\n", (float)fourPi
+echo \n
+echo display real values in hex\n
+printf "flt1: 0x%08x\n", (float)flt1
+printf "flt2: 0x%08x\n", (float)flt2
+printf "fourPi:  0x%08x\n", (float)fourPi
+echo \n
+echo ------------------------------------ \n
+echo display strings as strings \n
+printf "myClass: %s\n", (char *)&myClass
+printf "edName: %s\n", (char *)&edName
+echo \n
+echo display strings (first 6) as hex \n
+print/x (char [6])myClass
+print/x (char [6])edName
+echo \n
+echo display strings (first 6) as decimal / characters \n
+print/d (char [6])myClass
+print/d (char [6])edName
+echo \n
+echo ------------------------------------ \n
+echo \n
+set logging off
+set confirm off
+quit
+

@@ -1,0 +1,36 @@
+
+display byte variables
+num1: 	0x402000:	17
+num2: 	0x402001:	9
+res1: 	0x402002:	26
+res2: 	0x402003:	8
+res3: 	0x402004:	153
+res4: 	0x402006:	1
+rem4: 	0x402007:	8
+
+display word variables
+num3: 	0x402008:	5003
+num4: 	0x40200a:	7
+res5: 	0x40200c:	5010
+res6: 	0x40200e:	4996
+res7: 	0x402010:	35021
+res8: 	0x402014:	714
+rem8: 	0x402016:	5
+
+display doubleword variables
+num5: 	0x402018:	100007
+num6: 	0x40201c:	1501
+res9: 	0x402020:	101508
+res10: 	0x402024:	98506
+res11: 	0x402028:	150110507
+res12: 	0x402030:	66
+rem12: 	0x402034:	941
+
+display quadword variables
+num7: 	0x402038:	12342314
+num8: 	0x402040:	14541
+res13: 	0x402048:	12356855
+res14: 	0x402050:	12327773
+res15: 	0x402058:	179469587874
+res16: 	0x402068:	848
+rem16: 	0x402070:	11546
