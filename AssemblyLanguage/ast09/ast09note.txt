@@ -1,0 +1,290 @@
+	; Read base 2 number from STDIN
+	; use read character system service
+	; convert character input to integer
+	; perfoorm error checking
+	; 	- valid characters
+	; 	- range (MAX)
+	; 	- input length
+
+	; return appropriate status code
+	; if ok, return integer value
+	; Suggestion
+	
+	; 	Read entire input then check?
+	; 	use asst #6 for int2aBin
+	
+	; --------------------------------------------------------------------------------
+	; --------------------------------------------------------------------------------
+
+	; Function: readBinaryNumber
+	; 	prologue
+	; 	loop to read user input
+	; 	i = 0
+	; 	getchar():
+	; 		read char
+	; 		if char = LF --> exit loop
+	; 		if (i < BUFFSIZE - 1) 
+	; 		{
+	; 			str[i] = char
+	; 			i++
+	; 		}
+	; 		jmp getchar
+	; 	if input > BUFFSIZE --> 
+	; 		1. set statis 
+	; 		2. exit error
+
+	; 	enter NULL to end of string
+	; 	loop to convert / check input
+	; --------------------------------------------------------------------------------
+	; 		ASST #6 macro/func
+	; 		check "0" - "1"
+	; 			if not --> set status exit function
+	; 		if error --> exit error --> line 191
+	; 	verify range (MIN/MAX)	
+	; 		if (num > max)
+	; 			set status 
+	; 			exit error
+	; -------------------------------------------------------------------------------- 
+
+	; 	return 1. value via reference
+	; 	return 2. status code via -- SUCCESS
+	; 	return 3. goto done
+
+	; 	exit error
+	; 		1. set status = NO SUCCESS
+	; 		2. goto done
+
+	; 	done: 
+	; 		epilogue
+	; 		ret
+
+
+	; 1. input buffer (50)
+	; 2. char 		(1)
+	; 3. Error msg 	(19)
+	; 4. ddTwo 		(4)
+	; ; ------------------
+	; 				(74)
+
+
+
+program results
+sorted list:         
+0           0           0           1           1
+2           2           2           2           2
+3           3           3           3           3
+3           3           3           3           3
+3           3           4           4           4
+4           4           4           4           5
+5           5           5           5           5
+5           5           5           5           5
+5           5           5           5           5
+6           6           6           6           6
+6           6           6           6           6
+7           7           7           7           7
+7           7           7           7           7
+7           7           7           7           7
+7           7           7           7           7
+7           7           7           7           7
+7           7           7           7           7
+7           7           7           7           8
+8           8           8           9           9
+9           9           9           9           9
+9           9           10          10          10
+10          10          10          10          10
+11          11          11          11          11
+11          11          11          11          11
+11          11          11          12          12
+12          13          13          13          13
+13          14          14          15          15
+15          15          15          15          15
+15          15          15          15          15
+15          15          15          15          15
+16          16          17          17          18
+18          19          19          20          20
+21          21          27          27          30
+
+statistical results:
+   length        =  165
+   minimum       =  0
+   maximum       =  30
+   median        =  7
+   average       =  8
+   variance      =  4900
+   std deviation =  5.449493
+
+
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Error, re-enter
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Error, re-enter
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Error, re-enter
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Error, re-enter
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Error, re-enter
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Error, re-enter
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Error, re-enter
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ Enter Binary Number
+ 

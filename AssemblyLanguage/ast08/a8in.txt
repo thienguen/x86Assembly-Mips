@@ -1,0 +1,69 @@
+#------------------------------------
+# CS 218 - Assignment #8
+#  Debugger Input Script
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a8out.txt
+set logging overwrite
+set logging on
+set prompt
+echo \n
+echo ------------------------------------ \n
+echo \n
+echo List1: \n
+print/d (int [29])list1
+echo \n
+printf "len1: %i\n", (int)len1
+echo \n
+printf "Min1: %i\n", (int)min1
+printf "Med1: %i\n", (int)med1
+printf "Max1: %i\n", (int)max1
+printf "EvenCnt1: %i\n", (int)evenCnt1
+printf "FiveCnt1: %i\n", (int)fiveCnt1
+printf "Ave1: %i\n", (int)ave1
+echo \n
+printf "Var1: %lld\n", (long)var1
+printf "Std1: %20.17f\n", (double)std1
+echo \n
+echo ------------------------------------ \n
+echo \n
+echo List2: \n
+print/d (int [100])list2
+echo \n
+printf "len2: %i\n", (int)len2
+echo \n
+printf "Min2: %i\n", (int)min2
+printf "Med2: %i\n", (int)med2
+printf "Max2: %i\n", (int)max2
+printf "EvenCnt2: %i\n", (int)evenCnt2
+printf "FiveCnt2: %i\n", (int)fiveCnt2
+printf "Ave2: %i\n", (int)ave2
+echo \n
+printf "Var2: %lld\n", (long)var2
+printf "Std2: %20.17f\n", (double)std2
+echo \n
+echo ------------------------------------ \n
+echo \n
+echo List3: \n
+print/d (int [200])list3
+echo \n
+printf "len3: %i\n", (int)len3
+echo \n
+printf "Min3: %i\n", (int)min3
+printf "Med3: %i\n", (int)med3
+printf "Max3: %i\n", (int)max3
+printf "EvenCnt3: %i\n", (int)evenCnt3
+printf "FiveCnt3: %i\n", (int)fiveCnt3
+printf "Ave3: %i\n", (int)ave3
+echo \n
+printf "Var3: %lld\n", (long)var3
+printf "Std3: %20.17f\n", (double)std3
+echo \n
+echo ------------------------------------ \n
+echo \n
+set logging off
+set confirm off
+quit
