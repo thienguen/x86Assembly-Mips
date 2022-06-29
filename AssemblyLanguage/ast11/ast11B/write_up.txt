@@ -1,0 +1,51 @@
+; *****************************************************************
+;  Name: Thien Nguyen
+;  NSHE ID: 2001904928
+;  Section: 1004
+;  Assignment: 11B
+;  Description: We compare the time differences between reading
+;  from a file with a large size buffer and a small size buffer
+
+
+*****************************************************************
+
+Machine Description:
+--------------------
+<machine type (desktop/laptop/mini), processor speed, disk type (ssd, hard-drive, etc.) and memory>
+Desktop, 3.70Ghz, SSD, 32GB. Run under Window Subsytem Linux (Ubuntu)
+
+Timing:
+-------
+Large Buffer
+Average Real Time: 0m0.171s
+
+Small Buffer
+Average Real Time: 0m7.187s
+
+
+Percentage Change: 4102.923%
+
+
+
+
+Explanation:
+------------
+<not to exceed 200 words>
+
+The time difference between the two is due to the size of the buffer. Clearly by the result
+the larger the buffer, the faster the program will run. As our example, it's more than 4000%
+faster.
+
+The reason is that whenever you read and write data there would be a buffer overhead
+that read a chunk of memory (depending on how big the buffer is) and waiting to be processed
+or when the users give it instruction. The more time we inccur the buffer overhead the more time it takes in the OS
+For assignment 11 A will incur the overhead with every 500000 bytes, but if you use a buffer 
+of size 2 bytes (Assignment 11 B), you will incur it every 2 bytes you read and write data. 
+That would be extremely slow
+
+However, big is not always good, or small is not always bad. We must design an appropriate buffer size.
+For example, if we (potentially) handle bad data, we should use a buffer of size smaller, so the 
+system services recognized it doesn't need that data, it can abort it and we less likely to waste resources
+
+
+

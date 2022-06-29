@@ -1,6 +1,6 @@
 ; *****************************************************************
 ;  Name: Thien Nguyen
-;  NSHE ID: 2001904928
+;  NSHE ID:
 ;  Section: 1004
 ;  Assignment: 6
 ;  Description:	Simple assembly language program to calculate 

@@ -1,6 +1,6 @@
 ; *****************************************************************
 ;  Name: Thien Nguyen
-;  NSHE ID: 2001904928
+;  NSHE ID: 
 ;  Section: 1004
 ;  Assignment: 8
 ;  Description:	Write four simple assembly language functions to

@@ -1,5 +1,5 @@
 ;  Name: Thien Nguyen
-;  NSHE ID: 2001904928
+;  NSHE ID: 
 ;  Section: Summer : 1004
 ;  Assignment: 1
 ;  Description: Become familiar with the tool chain, and get 

@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# Assignment #11 B execution timing script.
+#
+# -----------------------------------------------------
+# Initial checks.
+#	Ensure asst #11 executable file exists.
+#	Ensure test file exists
+#
+if [ ! -e benfordSM ] || [ ! -x benfordSM ]; then
+	echo "Error, unable to find benfordSM executable file."
+	exit
+fi
+#
+if [ ! -e benfordLG ] || [ ! -x benfordLG ]; then
+	echo "Error, unable to find addlinesLG executable file."
+	exit
+fi
+#
+if [ ! -e random.txt ]; then
+	echo "Error, unable to find input test files."
+	exit
+fi
+#
+# -----------------------------------------------------
+# Display header
+#
+bolded=`tput bold`
+normal=`tput sgr0`
+clear
+echo -e "\\n${bolded}Assignment #11 B Timed Executions${normal}\\n"
+#
+# -----------------------------------------------------
+# Original (large buffer)
+#
+echo "***************************************"
+echo -e "Starting Large Buffer Timed Executions\\n"
+echo "***************************************" > a11Btimes.txt
+echo -e "Large Buffer Timed Executions" >> a11Btimes.txt
+
+for i in {1..3..1}
+do
+
+	echo -e "\\n-------------------" >> a11Btimes.txt
+	echo "Timed Test #${i}" >> a11Btimes.txt
+	echo
+	echo "${bolded}Test #${i} - Large Buffer${normal}"
+	echo "./benfordLG -i random.txt -o tmp.txt"
+	(time ./benfordLG -i random.txt -o tmp.txt ) 2>> a11Btimes.txt
+
+	if `diff tmp.txt mstr.txt >/dev/null` ; then
+		echo "Test #${i} - Successful"
+	else
+		diff tmp.txt mstr.txt
+	fi
+
+done
+echo -e "\n\n" >> a11Btimes.txt
+#
+# ----------
+#
+echo
+echo
+echo "***************************************"
+echo -e "Starting Small Buffer Timed Executions\\n"
+echo "***************************************" >> a11Btimes.txt
+echo -e "Small Buffer Timed Executions" >> a11Btimes.txt
+
+for i in {1..3..1}
+do
+
+	echo -e "\\n-------------------" >> a11Btimes.txt
+	echo "Timed Test #${i}" >> a11Btimes.txt
+	echo
+	echo "${bolded}Test #${i} - Small Buffer${normal}"
+	echo "./benfordSM -i random.txt -o tmp.txt"
+	(time ./benfordSM -i random.txt -o tmp.txt ) 2>> a11Btimes.txt
+
+	if `diff tmp.txt mstr.txt >/dev/null` ; then
+		echo "Test #${i} - Successful"
+	else
+		diff tmp.txt mstr.txt
+	fi
+
+done
+echo -e "\n\n" >> a11Btimes.txt
+#
+# -----------------------------------------------------
+# Done
+#
+rm tmp.txt
+rm out.txt
+#
+echo
+echo
+echo "Timed Tests completed."
+echo "See ${bolded}a11Btimes.txt${normal} results."
+echo
+
