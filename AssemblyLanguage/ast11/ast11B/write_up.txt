@@ -1,6 +1,6 @@
 ; *****************************************************************
 ;  Name: Thien Nguyen
-;  NSHE ID: 2001904928
+;  NSHE ID: 
 ;  Section: 1004
 ;  Assignment: 11B
 ;  Description: We compare the time differences between reading
