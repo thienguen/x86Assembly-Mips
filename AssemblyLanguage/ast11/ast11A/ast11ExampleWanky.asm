@@ -10,6 +10,7 @@
 ;  names (input and output) from the command line.  An example command line is:
 
 ;  NOTE: THE DIFFERNCE IS THIS WILL COUNT ALL THE NUMBER IN THE TEXT FILES
+;  READ HERE MFRS
 
 ; -----
 ;  * Function - getArguments()
