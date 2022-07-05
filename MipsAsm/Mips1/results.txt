@@ -1,0 +1,25 @@
+SPIM Version 8.0 of January 8, 2010
+Copyright 1990-2010, James R. Larus.
+All Rights Reserved.
+See the file README for a full copyright notice.
+Loaded: /usr/lib/spim/exceptions.s
+MIPS Assignment #1 
+  Program to calculate the volume of each rectangular 
+  parallelepiped in a series of rectangular parallelepipeds.
+  Also finds min, mid, max, sum, and average for volumes.
+  Volumes: 
+     3863654     3079692     2186145     6427036     6940534     1522850
+     1811460     2525627     5443181     6973830     -6375336     -3270046
+     -4008960     -8733492     -8659872     2727648     11737592     1049048
+     3081116     8871408     -4235220     -5765256     -8318032     -14582400
+     -1667320     2518431     5314092     4226472     2257840     2903850
+     -2317050     -1471503     -443784     -5643264     -13629140     1973160
+     5546266     2843760     10930626     4899180     -3831408     -4080384
+     -1780380     -12693002     -2257230     1857492     4500036     1788696
+     10268375     14152806     -5389122     15066397     3948640     2057884
+     21375306
+  Volumes Min = -14582400
+  Volumes Mid = 4226472
+  Volumes Max = 21375306
+  Volumes Sum = 67517929
+  Volumes Ave = 1227598

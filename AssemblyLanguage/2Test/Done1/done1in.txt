@@ -1,0 +1,32 @@
+#------------------------------------
+# CS 218
+#   Assignment #Practice
+#   Debugger Script File
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a2out.txt
+set logging overwrite
+set logging on
+set prompt
+echo \n
+echo ------------------------------------ \n
+echo display provided data x, y, z \n
+x/dw &x
+x/dw &y
+x/dh &z
+echo \n
+echo ------------------------------------ \n
+echo display provided data pnt1, pnt2, pnt3. p3rm \n
+x/dw &pnt1
+x/dw &pnt2
+x/dw &pnt3
+x/dw &p3rm
+echo ------------------------------------ \n
+echo \n
+set logging off
+set confirm off
+quit
+

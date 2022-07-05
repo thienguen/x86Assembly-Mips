@@ -1,0 +1,80 @@
+#------------------------------------
+# CS 218
+#   Assignment #2
+#   Debugger Script File
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a2out.txt
+set logging overwrite
+set logging on
+set prompt
+echo \n
+echo ------------------------------------ \n
+echo display provided data pVals \n
+x/9dw &pVals
+echo ------------------------------------ \n
+echo \n
+echo display provided data cVals \n
+x/9dw &cVals
+echo ------------------------------------ \n
+echo display provided data cSquare
+echo \n
+x/9dw &cSquare
+echo \n
+echo ------------------------------------ \n
+echo display provided data aVals and bVals \n
+x/9dh &aVals
+echo ------------------------------------ \n
+echo \n
+x/9dh &bVals
+echo ------------------------------------ \n
+echo \n
+echo display provided data min, max, sum, med, average \n
+x/dw &min
+x/dw &max
+x/dw &sum
+x/dw &med
+x/dw &average
+echo ------------------------------------ \n
+echo \n
+set logging off
+set confirm off
+quit
+
+#------------------------------------
+# CS 218
+#   Assignment #2
+#   Debugger Script File
+#------------------------------------
+echo \n\n
+break last
+run
+set pagination off
+set logging file a2out.txt
+set logging overwrite
+set logging on
+set prompt
+echo \n
+echo ------------------------------------ \n
+echo display provided data Array1 \n
+x/3dw &Array1
+echo ------------------------------------ \n
+echo display provided data Array2 \n
+x/3dw &Array2
+echo ------------------------------------ \n
+echo display provided data temp \n
+x/dw &temp
+echo ------------------------------------ \n
+echo display provided data dollars \n
+x/dh &dollars
+echo ------------------------------------ \n
+echo display provided data cents \n
+x/db &temp
+echo ------------------------------------ \n
+echo \n
+set logging off
+set confirm off
+quit
