@@ -1,0 +1,85 @@
+SPIM Version 8.0 of January 8, 2010
+Copyright 1990-2010, James R. Larus.
+All Rights Reserved.
+See the file README for a full copyright notice.
+Loaded: /usr/lib/spim/exceptions.s
+
+MIPS Assignment #4
+Fibonacci and Perrin Numbers Program
+
+
+Enter N (3-45, 0 to terminate): 
+
+Error, value of range.  Please re-enter.
+
+
+
+Enter N (3-45, 0 to terminate): 
+
+Error, value of range.  Please re-enter.
+
+
+
+Enter N (3-45, 0 to terminate): 
+
+This should be quick.
+
+num =  0   fibonacci =        0   perrin =      3
+num =  1   fibonacci =        1   perrin =      0
+num =  2   fibonacci =        1   perrin =      2
+num =  3   fibonacci =        2   perrin =      3
+num =  4   fibonacci =        3   perrin =      2
+num =  5   fibonacci =        5   perrin =      5
+num =  6   fibonacci =        8   perrin =      5
+num =  7   fibonacci =       13   perrin =      7
+num =  8   fibonacci =       21   perrin =     10
+num =  9   fibonacci =       34   perrin =     12
+num = 10   fibonacci =       55   perrin =     17
+num = 11   fibonacci =       89   perrin =     22
+num = 12   fibonacci =      144   perrin =     29
+num = 13   fibonacci =      233   perrin =     39
+num = 14   fibonacci =      377   perrin =     51
+num = 15   fibonacci =      610   perrin =     68
+num = 16   fibonacci =      987   perrin =     90
+num = 17   fibonacci =     1597   perrin =    119
+num = 18   fibonacci =     2584   perrin =    158
+num = 19   fibonacci =     4181   perrin =    209
+
+
+Enter N (3-45, 0 to terminate): 
+
+This is going to take a while (n>20).
+
+num =  0   fibonacci =        0   perrin =      3
+num =  1   fibonacci =        1   perrin =      0
+num =  2   fibonacci =        1   perrin =      2
+num =  3   fibonacci =        2   perrin =      3
+num =  4   fibonacci =        3   perrin =      2
+num =  5   fibonacci =        5   perrin =      5
+num =  6   fibonacci =        8   perrin =      5
+num =  7   fibonacci =       13   perrin =      7
+num =  8   fibonacci =       21   perrin =     10
+num =  9   fibonacci =       34   perrin =     12
+num = 10   fibonacci =       55   perrin =     17
+num = 11   fibonacci =       89   perrin =     22
+num = 12   fibonacci =      144   perrin =     29
+num = 13   fibonacci =      233   perrin =     39
+num = 14   fibonacci =      377   perrin =     51
+num = 15   fibonacci =      610   perrin =     68
+num = 16   fibonacci =      987   perrin =     90
+num = 17   fibonacci =     1597   perrin =    119
+num = 18   fibonacci =     2584   perrin =    158
+num = 19   fibonacci =     4181   perrin =    209
+num = 20   fibonacci =     6765   perrin =    277
+num = 21   fibonacci =    10946   perrin =    367
+num = 22   fibonacci =    17711   perrin =    486
+num = 23   fibonacci =    28657   perrin =    644
+num = 24   fibonacci =    46368   perrin =    853
+num = 25   fibonacci =    75025   perrin =   1130
+num = 26   fibonacci =   121393   perrin =   1497
+
+
+Enter N (3-45, 0 to terminate): 
+
+
+Game Over, thank you for playing.

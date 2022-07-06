@@ -246,10 +246,12 @@ sumLoop:
 #####################################################################
 # ---- # TODO int iSqrt(int num) 
 #  MIPS assembly language function  that
-#*  v0 - return / root
-#*  t0 - bit
-#*  t1 - num
-#*  t2,t3 - temps
+
+#  v0 - return / root
+#  t0 - bit
+#  t1 - (int)num
+#  t2,t3 - temps
+
 #*  int isqrt(int num) {
 #*    int ret = 0;
 #*    int bit = 1 << 30; // The second-to-top bit is set
