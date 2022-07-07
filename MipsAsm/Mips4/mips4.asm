@@ -126,7 +126,6 @@ allDone:
 .globl getNumber
 .ent getNumber
 getNumber:
-
 # ----
 #  Prolouge
 	subu $sp, $sp, 4

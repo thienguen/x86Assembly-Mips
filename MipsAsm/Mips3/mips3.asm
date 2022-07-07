@@ -297,7 +297,6 @@ main:
 #*	$a0 - address of two-dimension two-dimension array
 #*	$a1 - order/size of two-dimension array
 
-
 #	YOUR CODE GOES HERE
 
 .globl chkMagicSqr

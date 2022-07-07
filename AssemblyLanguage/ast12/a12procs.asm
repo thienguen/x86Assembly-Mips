@@ -91,8 +91,6 @@ errLValue	db	"Error, invalid limit value."
 ;  Local variables for aBin2int function (if any)
 
 
-
-
 ; ***************************************************************
 
 section	.text
@@ -259,8 +257,6 @@ Donezo:
 	pop r12
 	pop rbx
 ret
-
-
 
 
 ; ******************************************************************

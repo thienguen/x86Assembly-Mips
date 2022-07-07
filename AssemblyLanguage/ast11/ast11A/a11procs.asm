@@ -595,10 +595,6 @@ w_exitWriteString:
 
 	ret
 
-
-
-
-
 ; ======================================================================
 ;  Generic function to display a string to the screen.
 ;  String must be NULL terminated.
