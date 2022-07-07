@@ -48,10 +48,10 @@ main:
     jal median
 
 
+    li $a0, 84
+    jal divideBy
 
-
-
-
+    move $t5, $v0 
 
 
 
@@ -141,18 +141,20 @@ oddArray:
 .globl calcBases
 .ent calcBases
 calcBases:
-	subu $sp, $sp, 32 					# preserve registers
+	subu $sp, $sp, 40 					# preserve registers
 	sw $s0, 0($sp)
 	sw $s1, 4($sp)
 	sw $s2, 8($sp)
 	sw $s3, 12($sp)
 	sw $s4, 16($sp)
 	sw $s5, 20($sp)
-	sw $fp, 24($sp)
-	sw $ra, 28($sp)
+    sw $s6, 24($sp)
+    sw $s7, 28($sp)
+	sw $fp, 32($sp)
+	sw $ra, 36($sp)
 
 	# set fp pointing to first arg on stack (array)
-	addu $fp, $sp, 32 
+	addu $fp, $sp, 40 
 
 	move $s0, $a0 						# | address of slantlens[i] 
 	move $s1, $a1 						# | address of heights[i]
@@ -224,11 +226,26 @@ sumLoop:
 # ----
 # Median
 
+    move $t2, $s2                       # t2 = len
+    move $t3, $s3                       # t3 = address of baselens[i]
 
+    div $t2, $s2, 2                     # t2 = len / 2
+    mul $t4, $t2, 4                     # t4 = index * 4 = offset
 
+    add $t5, $s3, $t4                   # t5 = address of middle element
+    lw $t6, ($t5)                       # t6 = value 
 
+    rem $t4, $s2, 2
+    bnez $t4, oddMedian
 
+    sub $t5, $t5, 4                     # t5 = address of previous         
+    lw $t7, ($t5)                       # t6 = value
 
+    add $t6, $t6, $t7                   # t6 = t6 + t7
+    div $t6, $t6, 2
+
+oddMedian:
+    sw $t6, ($s5)                       # bMed = t6
 
     lw $s0, ($sp)
     lw $s1, 4($sp)
@@ -236,9 +253,11 @@ sumLoop:
 	lw $s3, 12($sp)
 	lw $s4, 16($sp)
 	lw $s5, 20($sp)
-	lw $fp, 24($sp)
-	lw $ra, 28($sp)
-	addu $sp, $sp, 32
+    lw $s6, 24($sp)
+    lw $s7, 28($sp)
+	lw $fp, 32($sp)
+	lw $ra, 36($sp)
+	addu $sp, $sp, 40
 
     jr $ra
 .end calcBases
@@ -246,12 +265,10 @@ sumLoop:
 #####################################################################
 # ---- # TODO int iSqrt(int num) 
 #  MIPS assembly language function  that
-
-#  v0 - return / root
-#  t0 - bit
-#  t1 - (int)num
-#  t2,t3 - temps
-
+#*  v0 - return / root
+#*  t0 - bit
+#*  t1 - num
+#*  t2,t3 - temps
 #*  int isqrt(int num) {
 #*    int ret = 0;
 #*    int bit = 1 << 30; // The second-to-top bit is set
@@ -309,3 +326,32 @@ isqrt_loop_end:
 isqrt_return:
     jr  $ra
 .end iSqrt
+
+.globl divideBy
+.ent divideBy
+divideBy:
+    subu  $sp, $sp, 16
+    sw    $ra, 12($sp)
+    sw    $fp, 8($sp)
+    sw    $s0, 4($sp)
+
+    addu $fp, $sp, 16
+
+    move $s0, $a0
+
+    li $t0, 42
+    sw $t0, 0($sp)
+
+    lw $t1, 0($sp)
+    div $t2, $s0, $t1
+
+    move $v0, $t2
+
+    lw    $s0, 4($sp)
+    lw    $fp, 8($sp)
+    lw    $ra, 12($sp)
+    addiu $sp, $sp, 16
+
+    jr $ra
+.end divideBy
+
