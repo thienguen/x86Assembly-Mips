@@ -8,9 +8,7 @@
 
 .data
 
-# lst:	 .word 1, 3, 5, 7, 9, 7, 3, 5, 7, 9
 
-lst:  .word 2, 3, 4, 5, 6, 7, 14, 16, 18, 20, 22
 
 
 
@@ -45,23 +43,6 @@ main:
 
 
 
-
-	la $t0, lst
-	add $t0, $t0, 4
-	li $t2, 3
-	li $t3, 10
-
-lp:
-	lw $t4, ($t0)
-	add $t3, $t3, $t4
-	add $t0, $t0, 4
-	sub $t2, $t2, 1
-	bnez $t2, lp
-	srl $t3, $t3, 1
-	lw $t5, 4($t0)
-	add $t1, $t5, $t3
-
-	#  t1 = 0x0000000E
 
 
 

@@ -1,7 +1,7 @@
 #  CS 218, MIPS Assignment #4
 
 #  Name: Thien Nguyen
-#  NSHE ID:
+#  NSHE ID: 2001904928
 #  Section: 1004
 #  Assignment: MIPS #4
 #  Description: Recursion
@@ -194,7 +194,7 @@ printMsg4:								# This is going to take a very long time (> 30 minutes).
 	syscall
 	j sayNoMore
 
-.end getNumber							# the whole function
+.end getNumber							# The whole function
 
 #####################################################################
 #  Display fibonacci sequence.
@@ -273,6 +273,7 @@ perrin:
 	subu $sp, $sp, 8
 	sw $s0, ($sp)
 	sw $ra, 4($sp)
+
 	move $s0, $a0						# s0 = a0 = n
 
 	beq $a0, 0, return0 				#* if n == 0, return 3
@@ -454,7 +455,7 @@ printSpaces:
 	syscall
 
 	sub $t1, $t1, 1						# t1 = t1 - 1
-	bnez $t1, printSpaces		# if t1 != 0, keep printing
+	bnez $t1, printSpaces				# if t1 != 0, keep printing
 
 doneSpace:
 	jr $ra

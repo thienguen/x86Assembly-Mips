@@ -7,13 +7,13 @@ section	.data
 ; -----
 ;  Define standard constants.
 
-NULL		equ	0			; end of string
+NULL		equ	0			    ; end of string
 
 TRUE		equ	1
 FALSE		equ	0
 
 EXIT_SUCCESS	equ	0			; Successful operation
-SYS_exit	equ	60			; call code for terminate
+SYS_exit	equ	60			    ; call code for terminate
 
 ; -----
 ;  Initialized Static Data Declarations.
@@ -22,6 +22,13 @@ SYS_exit	equ	60			; call code for terminate
 
 
 ; TODO PLACE DATA HERE
+
+
+
+
+
+
+
 
 
 
@@ -51,6 +58,17 @@ _start:
 
 
 ; TODO START HERE
+
+
+
+
+
+
+
+
+
+
+
 
 
 

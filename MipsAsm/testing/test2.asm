@@ -265,30 +265,27 @@ oddMedian:
 #####################################################################
 # ---- # TODO int iSqrt(int num) 
 #  MIPS assembly language function  that
-#*  v0 - return / root
-#*  t0 - bit
-#*  t1 - num
-#*  t2,t3 - temps
-#*  int isqrt(int num) {
-#*    int ret = 0;
-#*    int bit = 1 << 30; // The second-to-top bit is set
-#*
-#* // "bit" starts at the highest power of four <= the argument.
-#*     while (num < bit) {
-#*         bit >>= 2;
-#*     }
-#* 
-#*     while (bit != 0) {
-#*         if (num < ret + bit) {
-#*         ret >>= 1;
-#*         } else {
-#*         num -= ret + bit;
-#*         ret = (ret >> 1) + bit;
-#*         }
-#*         bit >>= 2;
-#*     }
-#*     return ret;
-#* }
+#  int isqrt(int num) {
+#    int ret = 0;
+# The second-to-top bit is set
+#    int bit = 1 << 30;
+#
+# "bit" starts at the highest power of four <= the argument.
+#     while (num < bit) {
+#         bit >>= 2;
+#     }
+# 
+#     while (bit != 0) {
+#         if (num < ret + bit) {
+#         ret >>= 1;
+#         } else {
+#         num -= ret + bit;
+#         ret = (ret >> 1) + bit;
+#         }
+#         bit >>= 2;
+#     }
+#     return ret;
+# }
 
 iSqrt:
     move  $v0, $zero        # initalize return
@@ -326,6 +323,9 @@ isqrt_loop_end:
 isqrt_return:
     jr  $ra
 .end iSqrt
+
+#####################################################################
+# ---- # TODO diviveByPnum / stackbase_variables
 
 .globl divideBy
 .ent divideBy

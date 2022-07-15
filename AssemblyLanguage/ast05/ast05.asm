@@ -198,7 +198,7 @@ maxDone1:
 	jae minDone1					   ; if it is greater than the max, if not, jump
 	mov dword[cvMin], eax	  		   ; update new max
 
-minDone1:
+minDone1:	
 	inc rsi        					   ; increment the index
 	loop startLoop1 				   ; loop until we reach the end
 

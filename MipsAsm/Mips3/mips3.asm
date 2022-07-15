@@ -471,7 +471,7 @@ sum2Diagonal:
 	blt $t0, $s1, sum2Diagonal			# until we get the sum of first diagonal
 
 	la $a0, d_msg						# $a0 = address of message
-	move $a1, $t4							# $a1 = diag 1
+	move $a1, $t4						# $a1 = diag 1
 	move $a2, $s3						# $a2 = sum of that diag
 	jal prtMsg
 
