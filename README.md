@@ -1,4 +1,6 @@
-Thien Nguyen, I didn't throw my notes on here, cause they are ................
+# A collection of useful X86_64, MIPS assembly programs
+[x]: # Author: [Thien Nguyen](
+[x]: # (c) 2021-2022 [N/A](
 
 ---
 # 1. Summer Course - CS 218 including 2 parts: 
