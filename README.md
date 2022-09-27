@@ -5,7 +5,7 @@
 [x] # (c) 2021-2022 [N/A]
 
 ---
-# 1. Summer Course - CS 218 including 2 parts: 
+# 1. Section A & B
 I barely passed this class, but meh, still need to keep this around for future courses. There is a lot of stuff we didn't go over as this is a summer course tho.
 
 ## 1.1 A. x86Assembly:
