@@ -1,0 +1,742 @@
+     1                                 %line 1+1 a10procs.asm
+     2                                 
+     3                                 
+     4                                 
+     5                                 
+     6                                 
+     7                                 
+     8                                 
+     9                                 
+    10                                 
+    11                                 
+    12                                 
+    13                                 
+    14                                 
+    15                                 
+    16                                 
+    17                                 
+    18                                 
+    19                                 
+    20                                 
+    21                                 
+    22                                 
+    23                                 
+    24                                 
+    25                                 
+    26                                 
+    27                                 
+    28                                 
+    29                                 [section .data]
+    30                                 
+    31                                 
+    32                                 
+    33                                 
+    34                                 TRUE equ 1
+    35                                 FALSE equ 0
+    36                                 
+    37                                 EXIT_SUCCESS equ 0
+    38                                 EXIT_NOSUCCESS equ 1
+    39                                 
+    40                                 STDIN equ 0
+    41                                 STDOUT equ 1
+    42                                 STDERR equ 2
+    43                                 
+    44                                 SYS_read equ 0
+    45                                 SYS_write equ 1
+    46                                 SYS_open equ 2
+    47                                 SYS_close equ 3
+    48                                 SYS_fork equ 57
+    49                                 SYS_exit equ 60
+    50                                 SYS_creat equ 85
+    51                                 SYS_time equ 201
+    52                                 
+    53                                 LF equ 10
+    54                                 SPACE equ " "
+    55                                 NULL equ 0
+    56                                 ESC equ 27
+    57                                 
+    58                                 
+    59                                 
+    60                                 
+    61                                 GL_COLOR_BUFFER_BIT equ 16384
+    62                                 GL_POINTS equ 0
+    63                                 GL_POLYGON equ 9
+    64                                 GL_PROJECTION equ 5889
+    65                                 
+    66                                 GLUT_RGB equ 0
+    67                                 GLUT_SINGLE equ 0
+    68                                 
+    69                                 
+    70                                 
+    71                                 
+    72                                 IT_MIN equ 255
+    73                                 IT_MAX equ 65535
+    74                                 RS_MAX equ 1023
+    75                                 
+    76                                 
+    77                                 
+    78                                 
+    79 00000000 55736167653A206368-    errUsage db "Usage: chaos -it <binaryNumber> -rs <binaryNumber>"
+    80 00000000 616F73202D6974203C-
+    81 00000000 62696E6172794E756D-
+    82 00000000 6265723E202D727320-
+    83 00000000 3C62696E6172794E75-
+    84 00000000 6D6265723E         
+    85 00000032 0A00                    db LF, NULL
+    86                                 
+    87 00000034 4572726F722C20696E-    errBadCL db "Error, invalid or incomplete command line argument."
+    88 00000034 76616C6964206F7220-
+    89 00000034 696E636F6D706C6574-
+    90 00000034 6520636F6D6D616E64-
+    91 00000034 206C696E6520617267-
+    92 00000034 756D656E742E       
+    93 00000067 0A00                    db LF, NULL
+    94                                 
+    95 00000069 4572726F722C206974-    errITsp db "Error, iterations specifier incorrect."
+    96 00000069 65726174696F6E7320-
+    97 00000069 737065636966696572-
+    98 00000069 20696E636F72726563-
+    99 00000069 742E               
+   100 0000008F 0A00                    db LF, NULL
+   101                                 
+   102 00000091 4572726F722C20696E-    errITvalue db "Error, invalid iterations value."
+   103 00000091 76616C696420697465-
+   104 00000091 726174696F6E732076-
+   105 00000091 616C75652E         
+   106 000000B1 0A00                    db LF, NULL
+   107                                 
+   108 000000B3 4572726F722C206974-    errITrange db "Error, iterations value must be between "
+   109 000000B3 65726174696F6E7320-
+   110 000000B3 76616C7565206D7573-
+   111 000000B3 742062652062657477-
+   112 000000B3 65656E20           
+   113 000000DB 313131313131313120-     db "11111111 (2) and 1111111111111111 (2)."
+   114 000000DB 28322920616E642031-
+   115 000000DB 313131313131313131-
+   116 000000DB 313131313131202832-
+   117 000000DB 292E               
+   118 00000101 0A00                    db LF, NULL
+   119                                 
+   120 00000103 4572726F722C20726F-    errRSsp db "Error, rotation speed specifier incorrect."
+   121 00000103 746174696F6E207370-
+   122 00000103 656564207370656369-
+   123 00000103 6669657220696E636F-
+   124 00000103 72726563742E       
+   125 0000012D 0A00                    db LF, NULL
+   126                                 
+   127 0000012F 4572726F722C20696E-    errRSvalue db "Error, invalid rotation speed value."
+   128 0000012F 76616C696420726F74-
+   129 0000012F 6174696F6E20737065-
+   130 0000012F 65642076616C75652E 
+   131 00000153 0A00                    db LF, NULL
+   132                                 
+   133 00000155 4572726F722C20726F-    errRSrange db "Error, rotation speed value must be between "
+   134 00000155 746174696F6E207370-
+   135 00000155 6565642076616C7565-
+   136 00000155 206D75737420626520-
+   137 00000155 6265747765656E20   
+   138 00000181 302028322920616E64-     db "0 (2) and 1111111111 (2)."
+   139 00000181 203131313131313131-
+   140 00000181 3131202832292E     
+   141 0000019A 0A00                    db LF, NULL
+   142                                 
+   143                                 
+   144                                 
+   145                                 
+   146 0000019C 00000000               red dd 0
+   147 000001A0 00000000               green dd 0
+   148 000001A4 00000000               blue dd 0
+   149                                 
+   150 000001A8 112D4454FB210940       pi dq 3.14159265358979
+   151 000001B0 0000000000806640       oneEighty dq 180.0
+   152 000001B8 0000000000000000       tmp dq 0.0
+   153                                 
+   154 000001C0 0000000000005E40       dStep dq 120.0
+   155 000001C8 0000000000407F40       scale dq 500.0
+   156                                 
+   157 000001D0 0000000000005940       rScale dq 100.0
+   158 000001D8 9A9999999999B93F       rStep dq 0.1
+   159 000001E0 0000000000000000       rSpeed dq 0.0
+   160                                 
+   161 000001E8 000000000000000000-    initX dq 0.0, 0.0, 0.0
+   162 000001E8 000000000000000000-
+   163 000001E8 000000000000       
+   164 00000200 000000000000000000-    initY dq 0.0, 0.0, 0.0
+   165 00000200 000000000000000000-
+   166 00000200 000000000000       
+   167                                 
+   168 00000218 0000000000000000       x dq 0.0
+   169 00000220 0000000000000000       y dq 0.0
+   170                                 
+   171 00000228 F30F0F0000000000       seed dq 987123
+   172 00000230 0300000000000000       qThree dq 3
+   173 00000238 0000000000000040       fTwo dq 2.0
+   174                                 
+   175                                 A_VALUE equ 9421
+   176                                 B_VALUE equ 1
+   177                                 
+   178                                 
+   179                                 
+   180                                 
+   181                                 [section .text]
+   182                                 
+   183                                 
+   184                                 
+   185                                 
+   186                                 [extern glutInit]
+   187                                 %line 143+0 a10procs.asm
+   188                                 [extern glutInitDisplayMode]
+   189                                 [extern glutInitWindowSize]
+   190                                 %line 144+1 a10procs.asm
+   191                                 [extern glutInitWindowPosition]
+   192                                 [extern glutCreateWindow]
+   193                                 %line 145+0 a10procs.asm
+   194                                 [extern glutMainLoop]
+   195                                 %line 146+1 a10procs.asm
+   196                                 [extern glutDisplayFunc]
+   197                                 %line 146+0 a10procs.asm
+   198                                 [extern glutIdleFunc]
+   199                                 [extern glutReshapeFunc]
+   200                                 [extern glutKeyboardFunc]
+   201                                 %line 147+1 a10procs.asm
+   202                                 [extern glutSwapBuffers]
+   203                                 [extern gluPerspective]
+   204                                 [extern glClearColor]
+   205                                 %line 149+0 a10procs.asm
+   206                                 [extern glClearDepth]
+   207                                 [extern glDepthFunc]
+   208                                 [extern glEnable]
+   209                                 [extern glShadeModel]
+   210                                 %line 150+1 a10procs.asm
+   211                                 [extern glClear]
+   212                                 %line 150+0 a10procs.asm
+   213                                 [extern glLoadIdentity]
+   214                                 [extern glMatrixMode]
+   215                                 [extern glViewport]
+   216                                 %line 151+1 a10procs.asm
+   217                                 [extern glTranslatef]
+   218                                 %line 151+0 a10procs.asm
+   219                                 [extern glRotatef]
+   220                                 [extern glBegin]
+   221                                 [extern glEnd]
+   222                                 [extern glVertex3f]
+   223                                 [extern glColor3f]
+   224                                 %line 152+1 a10procs.asm
+   225                                 [extern glVertex2f]
+   226                                 %line 152+0 a10procs.asm
+   227                                 [extern glVertex2i]
+   228                                 [extern glColor3ub]
+   229                                 [extern glOrtho]
+   230                                 [extern glFlush]
+   231                                 [extern glVertex2d]
+   232                                 %line 153+1 a10procs.asm
+   233                                 [extern glutPostRedisplay]
+   234                                 
+   235                                 
+   236                                 
+   237                                 
+   238                                 [extern cos]
+   239                                 %line 158+0 a10procs.asm
+   240                                 [extern sin]
+   241                                 [extern tan]
+   242                                 [extern cosh]
+   243                                 [extern sinh]
+   244                                 [extern tanh]
+   245                                 %line 159+1 a10procs.asm
+   246                                 
+   247                                 
+   248                                 
+   249                                 
+   250                                 
+   251                                 
+   252                                 
+   253                                 
+   254                                 
+   255                                 
+   256                                 
+   257                                 
+   258                                 
+   259                                 
+   260                                 [global printString]
+   261                                 printString:
+   262 00000000 53                      push rbx
+   263                                 
+   264                                 
+   265                                 
+   266                                 
+   267 00000001 4889FB                  mov rbx, rdi
+   268 00000004 48C7C200000000          mov rdx, 0
+   269                                 strCountLoop:
+   270 0000000B 803B00                  cmp byte [rbx], NULL
+   271 0000000E 7406                    je strCountDone
+   272 00000010 48FFC3                  inc rbx
+   273 00000013 48FFC2                  inc rdx
+   274 00000016 EBF1                    jmp strCountLoop
+   275                                 strCountDone:
+   276                                 
+   277 00000018 4883FA00                cmp rdx, 0
+   278 0000001C 7411                    je prtDone
+   279                                 
+   280                                 
+   281                                 
+   282                                 
+   283 0000001E 48C7C001000000          mov rax, SYS_write
+   284 00000025 4889FE                  mov rsi, rdi
+   285 00000028 48C7C701000000          mov rdi, STDOUT
+   286                                 
+   287 0000002F 0F05                    syscall
+   288                                 
+   289                                 
+   290                                 
+   291                                 
+   292                                 prtDone:
+   293 00000031 5B                      pop rbx
+   294 00000032 C3                      ret
+   295                                 
+   296                                 
+   297                                 
+   298                                 
+   299                                 
+   300                                 
+   301                                 
+   302                                 
+   303                                 
+   304                                 
+   305                                 
+   306                                 
+   307                                 
+   308                                 
+   309                                 
+   310                                 
+   311                                 
+   312                                 
+   313                                 
+   314                                 [global aBin2int]
+   315                                 aBin2int:
+   316                                 
+   317 00000033 4154                    push r12
+   318 00000035 4155                    push r13
+   319 00000037 4156                    push r14
+   320                                 
+   321 00000039 4989FC                  mov r12, rdi
+   322 0000003C 49C7C500000000          mov r13, 0
+   323 00000043 B800000000              mov eax, 0
+   324                                 
+   325                                 nextChar:
+   326 00000048 48C7C100000000          mov rcx, 0
+   327 0000004F 438A0C2C                mov cl, byte[r12+r13]
+   328                                 
+   329 00000053 80F900                  cmp cl, NULL
+   330 00000056 7417                    je nextCharDone
+   331                                 
+   332 00000058 80E930                  sub cl, 0x30
+   333 0000005B 80F901                  cmp cl, 1
+   334 0000005E 7721                    ja binaryError
+   335                                 
+   336 00000060 41BE02000000            mov r14d, 2
+   337 00000066 41F7E6                  mul r14d
+   338 00000069 4801C8                  add rax, rcx
+   339                                 
+   340 0000006C 49FFC5                  inc r13
+   341 0000006F EBD5                    jmp nextChar
+   342                                 
+   343                                 nextCharDone:
+   344 00000071 4983FD00                cmp r13, 0
+   345 00000075 740A                    je binaryError
+   346                                 
+   347 00000077 488906                  mov qword[rsi], rax
+   348 0000007A 48C7C001000000          mov rax, TRUE
+   349 00000081 EB05                    jmp done
+   350                                 
+   351                                 binaryError:
+   352 00000083 48C7C000000000          mov rax, FALSE
+   353                                 
+   354                                 done:
+   355 0000008A 415E                    pop r14
+   356 0000008C 415D                    pop r13
+   357 0000008E 415C                    pop r12
+   358 00000090 C3                     ret
+   359                                 
+   360                                 
+   361                                 
+   362                                 
+   363                                 
+   364                                 
+   365                                 
+   366                                 
+   367                                 
+   368                                 
+   369                                 
+   370                                 
+   371                                 
+   372                                 
+   373                                 [global getIterations]
+   374                                 getIterations:
+   375                                 
+   376 00000091 53                      push rbx
+   377 00000092 4154                    push r12
+   378 00000094 4155                    push r13
+   379 00000096 4156                    push r14
+   380 00000098 4157                    push r15
+   381                                 
+   382 0000009A 4989FD                  mov r13, rdi
+   383 0000009D 4989F4                  mov r12, rsi
+   384 000000A0 4989D6                  mov r14, rdx
+   385 000000A3 4989CF                  mov r15, rcx
+   386                                 
+   387                                 
+   388 000000A6 4983FD01                cmp r13, 1
+   389 000000AA 0F8499000000            je usageMsg
+   390                                 
+   391                                 
+   392 000000B0 4983FD05                cmp r13, 5
+   393 000000B4 0F8598000000            jne badCommandMsg
+   394                                 
+   395                                 
+   396 000000BA 498B5C2408              mov rbx, qword[r12+8]
+   397                                 
+   398 000000BF 8A03                    mov al, byte[rbx]
+   399 000000C1 3C2D                    cmp al, "-"
+   400 000000C3 0F8592000000            jne iterSpecMsg
+   401                                 
+   402 000000C9 8A4301                  mov al, byte[rbx+1]
+   403 000000CC 3C69                    cmp al, "i"
+   404 000000CE 0F8587000000            jne iterSpecMsg
+   405                                 
+   406 000000D4 8A4302                  mov al, byte[rbx+2]
+   407 000000D7 3C74                    cmp al, "t"
+   408 000000D9 0F857C000000            jne iterSpecMsg
+   409                                 
+   410 000000DF 8A4303                  mov al, byte[rbx+3]
+   411 000000E2 3C00                    cmp al, NULL
+   412 000000E4 7579                    jne iterSpecMsg
+   413                                 
+   414                                 
+   415                                 
+   416 000000E6 498B7C2410              mov rdi, qword[r12+16]
+   417 000000EB 4C89F6                  mov rsi, r14
+   418 000000EE E83BFFFFFF              call aBin2int
+   419 000000F3 4883F801                cmp rax, TRUE
+   420 000000F7 756F                    jne iterValueMsg
+   421                                 
+   422 000000F9 41813EFFFF0000          cmp dword[r14], IT_MAX
+   423 00000100 776F                    ja iterRangeMsg
+   424                                 
+   425 00000102 41813EFF000000          cmp dword[r14], IT_MIN
+   426 00000109 7266                    jb iterRangeMsg
+   427                                 
+   428                                 
+   429 0000010B 498B5C2418              mov rbx, qword[r12+24]
+   430                                 
+   431 00000110 8A03                    mov al, byte[rbx]
+   432 00000112 3C2D                    cmp al, "-"
+   433 00000114 7564                    jne rotationSpecMsg
+   434                                 
+   435 00000116 8A4301                  mov al, byte[rbx+1]
+   436 00000119 3C72                    cmp al, "r"
+   437 0000011B 755D                    jne rotationSpecMsg
+   438                                 
+   439 0000011D 8A4302                  mov al, byte[rbx+2]
+   440 00000120 3C73                    cmp al, "s"
+   441 00000122 7556                    jne rotationSpecMsg
+   442                                 
+   443 00000124 8A4303                  mov al, byte[rbx+3]
+   444 00000127 3C00                    cmp al, NULL
+   445 00000129 754F                    jne rotationSpecMsg
+   446                                 
+   447                                 
+   448                                 
+   449 0000012B 498B7C2420              mov rdi, qword[r12+32]
+   450 00000130 4C89FE                  mov rsi, r15
+   451 00000133 E8F6FEFFFF              call aBin2int
+   452                                 
+   453 00000138 4883F801                cmp rax, TRUE
+   454 0000013C 7545                    jne rotationValueMsg
+   455                                 
+   456 0000013E 41813FFF030000          cmp dword[r15], RS_MAX
+   457 00000145 7745                    ja rotationRangeMsg
+   458                                 
+   459 00000147 41833F00                cmp dword[r15], 0
+   460 0000014B 723F                    jb rotationRangeMsg
+   461                                 
+   462                                 
+   463                                 
+   464                                 
+   465 0000014D EB52                    jmp exitFunction
+   466                                 
+   467                                 
+   468                                 usageMsg:
+   469 0000014F 48C7C7[00000000]        mov rdi, errUsage
+   470 00000156 EB3D                    jmp print
+   471                                 
+   472                                 badCommandMsg:
+   473 00000158 48C7C7[00000000]        mov rdi, errBadCL
+   474 0000015F EB34                    jmp print
+   475                                 
+   476                                 iterSpecMsg:
+   477 00000161 48C7C7[00000000]        mov rdi, errITsp
+   478 00000168 EB2B                    jmp print
+   479                                 
+   480                                 iterValueMsg:
+   481 0000016A 48C7C7[00000000]        mov rdi, errITvalue
+   482 00000171 EB22                    jmp print
+   483                                 
+   484                                 iterRangeMsg:
+   485 00000173 48C7C7[00000000]        mov rdi, errITrange
+   486 0000017A EB19                    jmp print
+   487                                 
+   488                                 rotationSpecMsg:
+   489 0000017C 48C7C7[00000000]        mov rdi, errRSsp
+   490 00000183 EB10                    jmp print
+   491                                 
+   492                                 rotationValueMsg:
+   493 00000185 48C7C7[00000000]        mov rdi, errRSvalue
+   494 0000018C EB07                    jmp print
+   495                                 
+   496                                 rotationRangeMsg:
+   497 0000018E 48C7C7[00000000]        mov rdi, errRSrange
+   498 00000195 EBFE                    jmp print
+   499                                 
+   500                                 print:
+   501 00000197 E85FFEFFFF              call printString
+   502 0000019C 48C7C000000000          mov rax, FALSE
+   503                                 
+   504                                 exitFunction:
+   505                                 
+   506 000001A3 415F                    pop r15
+   507 000001A5 415E                    pop r14
+   508 000001A7 415D                    pop r13
+   509 000001A9 415C                    pop r12
+   510 000001AB 5B                      pop rbx
+   511 000001AC C3                      ret
+   512                                 
+   513                                 
+   514                                 
+   515                                 
+   516                                 
+   517                                 
+   518                                 
+   519                                 
+   520                                 
+   521                                 
+   522                                 
+   523                                 
+   524                                 
+   525                                 
+   526                                 
+   527                                 
+   528                                 
+   529                                 
+   530                                 
+   531                                 
+   532                                 [common drawColor 1:4]
+   533                                 [common degree 1:4]
+   534                                 [common iterations 1:4]
+   535                                 [common rotateSpeed 1:4]
+   536                                 
+   537                                 
+   538                                 [global drawChaos]
+   539                                 drawChaos:
+   540 000001AD 53                      push rbx
+   541 000001AE 4154                    push r12
+   542 000001B0 4155                    push r13
+   543                                 
+   544                                 
+   545                                 
+   546 000001B2 49C7C500000000          mov r13, 0
+   547                                 
+   548                                 
+   549                                 
+   550                                 
+   551                                 
+   552 000001B9 48C7C700400000          mov rdi, GL_COLOR_BUFFER_BIT
+   553 000001C0 E8(F6FFFFFF)            call glClear
+   554                                 
+   555                                 
+   556                                 
+   557                                 
+   558 000001C5 F20F2A0425[00000000]      cvtsi2sd xmm0, dword[rotateSpeed]
+   559 000001CE F20F5E0425[00000000]      divsd xmm0, qword[rScale]
+   560 000001D7 F20F110425[00000000]      movsd qword[rStep], xmm0
+   561                                 
+   562                                 
+   563                                 
+   564                                 
+   565                                 
+   566                                 
+   567                                 
+   568 000001E0 F20F100425[00000000]      movsd xmm0, qword[pi]
+   569 000001E9 F20F5E0425[00000000]      divsd xmm0, qword[oneEighty]
+   570 000001F2 F20F110425[00000000]      movsd qword[tmp], xmm0
+   571                                 
+   572                                 
+   573                                 
+   574                                 
+   575 000001FB 48C7C700000000          mov rdi, GL_POINTS
+   576 00000202 E8(F6FFFFFF)            call glBegin
+   577                                 
+   578                                 
+   579                                 
+   580 00000207 48C7C300000000          mov rbx, 0
+   581                                 
+   582                                 
+   583                                 
+   584                                 initLoop:
+   585                                 
+   586 0000020E F20F100425[00000000]      movsd xmm0, qword[rSpeed]
+   587 00000217 F2480F2ACB              cvtsi2sd xmm1, rbx
+   588 0000021C F20F590C25[00000000]      mulsd xmm1, qword[dStep]
+   589 00000225 F20F58C1                addsd xmm0, xmm1
+   590 00000229 F20F590425[00000000]      mulsd xmm0, qword[tmp]
+   591 00000232 E8(F6FFFFFF)            call sin
+   592 00000237 F20F590425[00000000]      mulsd xmm0, qword[scale]
+   593 00000240 F20F1104DD[00000000]      movsd qword[initX+rbx*8], xmm0
+   594                                 
+   595                                 
+   596 00000249 F20F100425[00000000]      movsd xmm0, qword[rSpeed]
+   597 00000252 F2480F2ACB              cvtsi2sd xmm1, rbx
+   598 00000257 F20F590C25[00000000]      mulsd xmm1, qword[dStep]
+   599 00000260 F20F58C1                addsd xmm0, xmm1
+   600 00000264 F20F590425[00000000]      mulsd xmm0, qword[tmp]
+   601 0000026D E8(F6FFFFFF)            call cos
+   602 00000272 F20F590425[00000000]      mulsd xmm0, qword[scale]
+   603 0000027B F20F1104DD[00000000]      movsd qword[initY+rbx*8], xmm0
+   604                                 
+   605 00000284 F20F1004DD[00000000]      movsd xmm0, qword[initX+rbx*8]
+   606 0000028D F20F100CDD[00000000]      movsd xmm1, qword[initY+rbx*8]
+   607 00000296 E8(F6FFFFFF)            call glVertex2d
+   608                                 
+   609 0000029B 48FFC3                  inc rbx
+   610 0000029E 4883FB03                cmp rbx, 3
+   611 000002A2 0F8260FFFFFF            jb initLoop
+   612                                 
+   613                                 
+   614                                 
+   615                                 mainPlotLoop:
+   616                                 
+   617                                 
+   618                                 
+   619                                 
+   620                                 
+   621                                 
+   622                                 
+   623 000002A8 488B0425[00000000]      mov rax, qword[seed]
+   624 000002B0 49C7C0CD240000          mov r8, A_VALUE
+   625 000002B7 49F7E0                  mul r8
+   626 000002BA 4883C001                add rax, B_VALUE
+   627 000002BE 48C70425[00000000]-     mov qword[seed], 0
+   628 000002BE 00000000           
+   629 000002CA 66890425[00000000]      mov word[seed], ax
+   630 000002D2 4899                    cqo
+   631 000002D4 F73C25[00000000]        idiv dword[qThree]
+   632                                 
+   633                                 
+   634                                 
+   635                                 
+   636                                 
+   637                                 
+   638                                 
+   639                                 
+   640                                 
+   641                                 
+   642                                 
+   643 000002DB 49C7C400000000          mov r12, 0
+   644 000002E2 4989D4                  mov r12, rdx
+   645                                 
+   646                                 
+   647 000002E5 F20F1004D5[00000000]      movsd xmm0, qword[initX+rdx*8]
+   648 000002EE F20F5C0425[00000000]      subsd xmm0, qword[x]
+   649 000002F7 F20F5E0425[00000000]      divsd xmm0, qword[fTwo]
+   650 00000300 F20F580425[00000000]      addsd xmm0, qword[x]
+   651 00000309 F20F110425[00000000]      movsd qword[x], xmm0
+   652                                 
+   653                                 
+   654 00000312 F20F1004D5[00000000]      movsd xmm0, qword[initY+rdx*8]
+   655 0000031B F20F5C0425[00000000]      subsd xmm0, qword[y]
+   656 00000324 F20F5E0425[00000000]      divsd xmm0, qword[fTwo]
+   657 0000032D F20F580425[00000000]      addsd xmm0, qword[y]
+   658 00000336 F20F110425[00000000]      movsd qword[y], xmm0
+   659                                 
+   660                                 
+   661                                 
+   662                                 
+   663                                 
+   664                                 
+   665 0000033F 4183FC00                cmp r12d, 0
+   666 00000343 740A                    je redColor
+   667                                 
+   668 00000345 4183FC01                cmp r12d, 1
+   669 00000349 7427                    je blueColor
+   670                                 
+   671 0000034B 4183FC02                cmp r12d, 2
+   672 0000034F 7444                    je greenColor
+   673                                 
+   674                                 redColor:
+   675 00000351 C70425[00000000]FF-     mov dword[red], 255
+   676 00000351 000000             
+   677 0000035C C70425[00000000]FF-     mov dword[green], 255
+   678 0000035C 000000             
+   679 00000367 C70425[00000000]28-     mov dword[blue], 40
+   680 00000367 000000             
+   681 00000372 EB44                    jmp afterChoosingColor
+   682                                 
+   683                                 blueColor:
+   684 00000374 C70425[00000000]FF-     mov dword[red], 255
+   685 00000374 000000             
+   686 0000037F C70425[00000000]00-     mov dword[green], 0
+   687 0000037F 000000             
+   688 0000038A C70425[00000000]FF-     mov dword[blue], 255
+   689 0000038A 000000             
+   690 00000395 EB21                    jmp afterChoosingColor
+   691                                 
+   692                                 greenColor:
+   693 00000397 C70425[00000000]00-     mov dword[red], 0
+   694 00000397 000000             
+   695 000003A2 C70425[00000000]FF-     mov dword[green], 255
+   696 000003A2 000000             
+   697 000003AD C70425[00000000]FF-     mov dword[blue], 255
+   698 000003AD 000000             
+   699 000003B8 EBFE                    jmp afterChoosingColor
+   700                                 
+   701                                 
+   702                                 afterChoosingColor:
+   703                                 
+   704 000003BA 48C7C700000000          mov rdi, 0
+   705 000003C1 48C7C600000000          mov rsi, 0
+   706 000003C8 48C7C200000000          mov rdx, 0
+   707                                 
+   708 000003CF 8B3C25[00000000]        mov edi, dword[red]
+   709 000003D6 8B3425[00000000]        mov esi, dword[green]
+   710 000003DD 8B1425[00000000]        mov edx, dword[blue]
+   711 000003E4 E8(F6FFFFFF)            call glColor3ub
+   712                                 
+   713                                 
+   714 000003E9 F20F100425[00000000]      movsd xmm0, qword[x]
+   715 000003F2 F20F100C25[00000000]      movsd xmm1, qword[y]
+   716 000003FB E8(F6FFFFFF)            call glVertex2d
+   717                                 
+   718                                 
+   719 00000400 49FFC5                  inc r13
+   720 00000403 443B2C25[00000000]      cmp r13d, dword[iterations]
+   721 0000040B 0F8691FEFFFF            jbe mainPlotLoop
+   722                                 
+   723 00000411 E8(F6FFFFFF)            call glEnd
+   724 00000416 E8(F6FFFFFF)            call glFlush
+   725                                 
+   726                                 
+   727                                 
+   728                                 
+   729                                 
+   730 0000041B F20F100425[00000000]      movsd xmm0, qword[rSpeed]
+   731 00000424 F20F580425[00000000]      addsd xmm0, qword[rStep]
+   732 0000042D F20F110425[00000000]      movsd qword[rSpeed], xmm0
+   733                                 
+   734 00000436 E8(F6FFFFFF)            call glutPostRedisplay
+   735                                 
+   736 0000043B 415D                    pop r13
+   737 0000043D 415C                    pop r12
+   738 0000043F 5B                      pop rbx
+   739 00000440 C3                     ret
+   740                                 
+   741                                 
+   742                                 
