@@ -1,8 +1,7 @@
 # A collection of useful X86_64, MIPS assembly programs
+- [x] # Author: [Thien Nguyen]
 
-[x] # Author: [Thien Nguyen]
-
-[x] # (c) 2021-2022 [N/A]
+- [x] # (c) 2021-2022 [N/A]
 
 ---
 # 1. Section A & B
