@@ -578,9 +578,9 @@ main:
 #	surfaceAreasStats(surfaceAreas, len, min, med, max, sum, ave)
 
 	la	$a0, surfaceAreas3		# arg #1
-	lw	$a1, len3			# arg #2
-	la	$a2, min3			# arg #3
-	la	$a3, med3			# arg #4
+	lw	$a1, len3				# arg #2
+	la	$a2, min3				# arg #3
+	la	$a3, med3				# arg #4
 	subu	$sp, $sp, 12
 	la	$t0, max3
 	sw	$t0, ($sp)			# arg #5, on stack

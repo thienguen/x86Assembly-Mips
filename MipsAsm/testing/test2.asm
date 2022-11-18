@@ -41,17 +41,11 @@ main:
 
 
 
+    li $s0, 0
 
+    lui $s0, 7
 
-    la $a0, aSides1
-    lw $a1, len1
-    jal median
-
-
-    li $a0, 84
-    jal divideBy
-
-    move $t5, $v0 
+    ori $s0, $s0, 8
 
 
 
