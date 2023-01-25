@@ -84,7 +84,7 @@
 
 ;	STEP #5
 ;	TODO YOUR CODE GOES HERE
-
+	
 	push	rax			; save altered registers
 	push	rdi
 	push	rsi
@@ -110,7 +110,7 @@
 
 %%popLoop:
 	pop rax
-	add al, "0"
+	add al,  
 
 	mov byte[rbx+rdi], al
 	inc rdi
